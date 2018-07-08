@@ -8,6 +8,7 @@ namespace FactoryMethod
 {
     class Program
     {
+        //Added Comments
         static void Main(string[] args)
         {
             var factory = new SavingsAcctFactory() as ICreditUnionFactory;
