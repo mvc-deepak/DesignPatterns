@@ -16,6 +16,7 @@ namespace NationalCreditUnion
         }
     }
 
+
     // ProductB2
     public class NationalLoanAccount : ILoanAccount
     {
@@ -25,8 +26,9 @@ namespace NationalCreditUnion
         }
     }
 
+
     // Concrete Factory 2
-    public class NationalCreditUnionFactory : ICreditUnionFactory
+        public class NationalCreditUnionFactory : ICreditUnionFactory
     {
         public override ILoanAccount CreateLoanAccount()
         {
@@ -40,4 +42,5 @@ namespace NationalCreditUnion
             return obj;
         }
     }
+
 }
