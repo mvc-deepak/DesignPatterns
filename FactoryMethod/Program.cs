@@ -37,9 +37,19 @@ namespace FactoryMethod
             Console.WriteLine($"My citi balance is ${citiAcct.Balance}" +
                 $" and national balance is ${nationalAcct.Balance}");
 
+            // Interface Basics
+            var factory2 = new SavingsAcctFactory();
+            var f2 = factory2.GetSavingsAccount(null);
+            var f22 = factory2.GetSavingsAccount2(null);
+
+            var factory3 = new SavingsAcctFactory() as ICreditUnionFactory2;
+            var f3 = factory3.GetSavingsAccount2(null);
+            //ICreditUnionFactory2' does not contain a definition for 'GetSavingsAccount' and 
+            //no extension method 'GetSavingsAccount' accepting a first argument of type 'ICreditUnionFactory2' could be found(are you missing a using directive or an assembly reference
+            //var f33 = factory3.GetSavingsAccount(null);
+
             Console.Read();
         }
-
     }
 
     // Product
@@ -72,8 +82,14 @@ namespace FactoryMethod
         ISavingsAccount GetSavingsAccount(string acctNo);
     }
 
+    // Creator
+    interface ICreditUnionFactory2
+    {
+        ISavingsAccount GetSavingsAccount2(string acctNo);
+    }
+
     // Concrete Creators
-    public class SavingsAcctFactory : ICreditUnionFactory
+    public class SavingsAcctFactory : ICreditUnionFactory, ICreditUnionFactory2
     {
         public ISavingsAccount GetSavingsAccount(string acctNo)
         {
@@ -94,7 +110,9 @@ namespace FactoryMethod
                 throw new ArgumentException("Invalid Account Number");
             }
         }
+        public ISavingsAccount GetSavingsAccount2(string acctNo)
+        {
+            return null;
+        }
     }
-
-
 }
